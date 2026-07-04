@@ -14,16 +14,14 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #0b1420;
             color: #ffffff;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start; /* Alinha o conteúdo começando do topo */
-            align-items: center;
+            display: block;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
             padding: 0;
+            text-align: center;
         }
-        /* ESTILO ANTERIOR: O banner oficial cobre o fundo com desfoque */
+        /* O banner oficial cobre o fundo com desfoque */
         .background-banner {
             position: fixed;
             top: 0;
@@ -36,16 +34,14 @@
             filter: blur(8px) brightness(0.2); /* Efeito cinematográfico de fundo */
             z-index: 1;
         }
-        /* NOVO AJUSTE: Espaço amplo e nítido para o Banner no Topo */
+        /* Espaço amplo e nítido para o Banner no Topo */
         .top-banner-area {
             position: relative;
             z-index: 2;
             width: 100%;
             max-width: 1000px; /* Limite de largura para não esticar demais */
-            margin-top: 30px;  /* Distância do topo da tela */
+            margin: 30px auto 0 auto;  /* Distância do topo da tela e centralizado horizontalmente */
             padding: 0 20px;
-            display: flex;
-            justify-content: center;
         }
         .top-banner-area img {
             width: 100%;
@@ -55,7 +51,7 @@
             border-radius: 12px;
             filter: drop-shadow(0px 0px 20px rgba(0, 132, 255, 0.4)); /* Brilho azul sutil */
         }
-        /* Card central de informações (estilo anterior) */
+        /* Card central de informações */
         .container {
             position: relative;
             z-index: 2;
@@ -67,8 +63,7 @@
             border: 1px solid rgba(0, 150, 255, 0.25);
             max-width: 450px;
             width: 90%;
-            margin-top: 25px; /* Espaçamento entre o banner do topo e o card */
-            margin-bottom: 40px;
+            margin: 25px auto 40px auto; /* Centralizado horizontalmente */
         }
         /* Logo oficial */
         .logo {
@@ -145,14 +140,15 @@
         <div class="spinner"></div>
         
         <p style="font-size: 13px; color: #627d99; margin-bottom: 15px;">Se o seu FiveM não iniciar a conexão automaticamente, utilize o botão abaixo:</p>
-        <a href="fivem://connect/cfx.re/join/vq3zod5" class="btn-manual">Conectar Manualmente</a>
+        <a href="fivem://connect/vq3zod5" class="btn-manual">Conectar Manualmente</a>
     </div>
 
     <script>
         window.onload = function() {
             setTimeout(function() {
-                window.location.href = "fivem://connect/cfx.re/join/vq3zod5";
-            }, 1800);
+                // Redirecionamento utilizando o formato direto para o Windows chamar o launcher padrão registrado
+                window.location.href = "fivem://connect/vq3zod5";
+            }, 2000); // 2 segundos (tempo ideal para renderizar os gifs de fundo e dar o gatilho)
         };
     </script>
 </body>

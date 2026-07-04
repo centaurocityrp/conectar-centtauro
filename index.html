@@ -3,152 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Iniciando Centtauro City RP</title>
+    <title>Conectando à Centtauro City</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        /* Estilos mantidos para manter sua identidade visual */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background-color: #0b1420;
             color: #ffffff;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
-            padding: 0;
-            text-align: center;
+            cursor: pointer;
         }
-        /* O banner oficial cobre o fundo com desfoque */
-        .background-banner {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('banner.gif');
-            background-size: cover;
-            background-position: center;
-            filter: blur(8px) brightness(0.2); /* Efeito cinematográfico de fundo */
-            z-index: 1;
-        }
-        /* Espaço amplo e nítido para o Banner no Topo */
-        .top-banner-area {
-            position: relative;
-            z-index: 2;
-            width: 100%;
-            max-width: 1000px; /* Limite de largura para não esticar demais */
-            margin: 30px auto 0 auto;  /* Distância do topo da tela e centralizado horizontalmente */
-            padding: 0 20px;
-        }
-        .top-banner-area img {
-            width: 100%;
-            height: auto;
-            max-height: 280px; /* Altura ideal e visível para o topo */
-            object-fit: contain; /* Garante que o banner NUNCA seja cortado */
-            border-radius: 12px;
-            filter: drop-shadow(0px 0px 20px rgba(0, 132, 255, 0.4)); /* Brilho azul sutil */
-        }
-        /* Card central de informações */
         .container {
-            position: relative;
-            z-index: 2;
-            background: rgba(11, 22, 37, 0.88); /* Tom azulado translúcido clássico */
+            background: rgba(11, 22, 37, 0.9);
             padding: 40px;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 8px 32px 0 rgba(0, 110, 255, 0.2);
-            border: 1px solid rgba(0, 150, 255, 0.25);
-            max-width: 450px;
+            border: 1px solid rgba(0, 150, 255, 0.3);
+            max-width: 400px;
             width: 90%;
-            margin: 25px auto 40px auto; /* Centralizado horizontalmente */
         }
-        /* Logo oficial */
-        .logo {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            margin-bottom: 20px;
-            box-shadow: 0 0 25px rgba(0, 150, 255, 0.4);
-            border: 2px solid rgba(0, 150, 255, 0.3);
-        }
-        h1 {
-            font-size: 25px;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: #ffffff;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-        }
-        p {
-            color: #9cb3cc;
-            font-size: 16px;
-            margin-bottom: 25px;
-        }
-        /* Spinner de carregamento personalizado em azul */
-        .spinner {
-            border: 4px solid rgba(0, 150, 255, 0.1);
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            border-left-color: #0096ff;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px auto;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        /* Botão de conexão manual estilizado em azul */
-        .btn-manual {
+        .btn-entrar {
             display: inline-block;
             background-color: #0084ff;
             color: #ffffff;
-            padding: 12px 24px;
+            padding: 15px 30px;
             border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
+            margin-top: 20px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0, 132, 255, 0.3);
-        }
-        .btn-manual:hover {
-            background-color: #0066cc;
-            transform: scale(1.03);
-            box-shadow: 0 6px 20px rgba(0, 132, 255, 0.5);
+            font-weight: bold;
         }
     </style>
 </head>
-<body>
-
-    <div class="background-banner"></div>
-
-    <div class="top-banner-area">
-        <img src="banner.gif" alt="Centtauro Banner">
-    </div>
+<body onclick="conectar()">
 
     <div class="container">
-        <img class="logo" src="logo.gif" alt="Centtauro City">
-        
         <h1>Centtauro City</h1>
-        <p>Iniciando carregamento da Cidade, por favor Aguarde ! ...</p>
-        
-        <div class="spinner"></div>
-        
-        <p style="font-size: 13px; color: #627d99; margin-bottom: 15px;">Se o seu FiveM não iniciar a conexão automaticamente, utilize o botão abaixo:</p>
-        <a href="fivem://connect/vq3zod5" class="btn-manual">Conectar Manualmente</a>
+        <p id="msg">Iniciando a conexão...</p>
+        <div class="btn-entrar">ENTRAR NA CIDADE</div>
     </div>
 
     <script>
+        const linkServidor = "fivem://connect/cfx.re/join/vq3zod5";
+
+        function conectar() {
+            window.location.href = linkServidor;
+        }
+
+        // Tenta o automático após 1 segundo
         window.onload = function() {
             setTimeout(function() {
-                // Redirecionamento utilizando o formato direto para o Windows chamar o launcher padrão registrado
-                window.location.href = "fivem://connect/vq3zod5";
-            }, 2000); // 2 segundos (tempo ideal para renderizar os gifs de fundo e dar o gatilho)
+                // A tentativa automática ocorre aqui. 
+                // Se o navegador bloquear, não causará erro na página, 
+                // apenas falhará silenciosamente.
+                window.location.href = linkServidor;
+                
+                // Atualiza a mensagem caso o automático não funcione
+                document.getElementById('msg').innerText = "Clique no botão se a conexão não iniciar.";
+            }, 1000);
         };
     </script>
 </body>
